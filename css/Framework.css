@@ -33,7 +33,10 @@
     transform: scale(0.98);
   }
   
-  
+  .card-dark
+  {
+    background-color: #6da3d7;
+  }
   .bg-primary,
   .btn-primary {
     background-color: var(--primary-color);
@@ -50,6 +53,13 @@
   .btn-dark {
     background-color: var(--dark-color);
     color: #fff;
+  }
+
+  .bg-lightdark,
+  .btn-lightdark
+  {
+    color: white;
+    background-color: var(--sub-coloring);
   }
   
   .bg-light,
