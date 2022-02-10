@@ -5,7 +5,6 @@
     --light-color: #f4f4f4;
     --success-color: #5cb85c;
     --error-color: #d9534f;
-
     --sub-coloring: #3a6672;
     }
     
@@ -75,8 +74,7 @@
     }
     
     .navbar a:hover {
-        transition: 0.8s ease-in;
-        border-bottom: 2px #fff solid;
+      border-bottom: 2px #fff solid;
     }
     
     .navbar .flex {
@@ -218,6 +216,25 @@
     .review-main .grid {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
+    }
+
+    @media (max-width: 528px) {
+
+
+      img
+      {
+        display: none;
+      }
+
+      section.overons-head.bg-primary.py-5
+      {
+        padding: 6rem 5rem;
+      }
+      h1.xl
+      {
+        font-size: 2rem;
+      }
+      
     }
     
     @media (max-width: 768px)
@@ -595,5 +612,11 @@
       width: 100%;
       font-size: 18px;
     }
+
+.Login-navbar
+{
+  height: 5rem;
+  background-color: rgba(2, 90, 49, 0.425);
+}
 
     
