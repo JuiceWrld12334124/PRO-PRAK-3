@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,8 +19,18 @@
             <h1 class="logo">Microhard</h1>
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a class="Login-navbar" href="index.html">Login</a></li>
+                    <?php
+                    if (isset($_SESSION["username"])) {
+                    echo "<li><a href='index.php'>Home</a></li>";
+                    echo "<li><a href='/website - posts/Posts-Page.php'>Posts</a></li>";
+                    echo "<li><a href='/api/logout.php'>Logout</a></li>";
+                    }
+                    else
+                    {
+                        echo "<li><a href='index.php'>Home</a></li>";
+                        echo "<li><a class='Login-navbar' href='/website-login/Login-Page.php'>Login</a></li>";
+                    }
+                    ?>
                 </ul>
             </nav>
         </div>
@@ -25,9 +39,9 @@
     <section class="overons-head bg-primary py-5">
         <div class="container grid">
             <div>
-                <h1 class="xl">Software</h1>
+                <h1 class="xl">Software Forum</h1>
                 <p class="lead">
-                    Welkom op onze software website
+                    Voor vragen rondom Software Development
                 </p>
 
             </div>

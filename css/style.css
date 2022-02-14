@@ -149,8 +149,7 @@
     }
     
 
-    
-    
+       
     .kaarten {
     padding-top: 100px;
     }
@@ -482,9 +481,6 @@
     transition: 0.5s;
     }
     
-    div h2:hover {
-    font-size: 105%;
-    }
     
     .flexform
     {
@@ -494,6 +490,19 @@
     .form {
       width:340px;
       height:440px;
+      background:#e6e6e6;
+      border-radius:8px;
+      box-shadow:0 0 40px -10px #000;
+      margin:calc(50vh - 220px) auto;
+      padding:20px 30px;
+      max-width:calc(100vw - 40px);
+      box-sizing:border-box;
+      font-family:'Montserrat',sans-serif;
+      position:relative
+    }
+
+    .form-loginPage {
+      width:340px;
       background:#e6e6e6;
       border-radius:8px;
       box-shadow:0 0 40px -10px #000;
@@ -532,8 +541,12 @@
       font-size:14px;
       color:#5a5a5a;
     }
+    .super-a {
+      color: #E91E63;
+      text-decoration: none !important;
+      background-color: transparent
+  }
     .button2 {
-      float:right;
       padding:8px 12px;
       margin:8px 0 0;
       font-family:'Montserrat',sans-serif;
@@ -593,6 +606,11 @@
       justify-content: space-around;
       margin: 10px;
     }
+
+    .flexdisplayx
+    {
+      display: flex;
+    }
     
     .textflex
     {
@@ -601,17 +619,7 @@
       margin: 10px;
     }
     
-    .card button {
-      border: none;
-      outline: 0;
-      padding: 12px;
-      color: white;
-      background-color: #000;
-      text-align: center;
-      cursor: pointer;
-      width: 100%;
-      font-size: 18px;
-    }
+
 
 .Login-navbar
 {
@@ -619,4 +627,125 @@
   background-color: rgba(2, 90, 49, 0.425);
 }
 
-    
+
+.font-b
+{
+  font-size: 18px;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: .88rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.mt-100 {
+  margin-top: 100px
+}
+
+.card-header:first-child {
+  border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  border-bottom-width: 1px;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right: .625rem;
+  height: 3.5rem;
+  text-transform: uppercase;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(26, 54, 126, 0.125)
+}
+
+.card-body {
+  flex: 1 1 auto;
+  padding: 1.25rem
+}
+
+
+.detailBox {
+  width:320px;
+  border:1px solid #bbb;
+  margin:50px;
+}
+.titleBox {
+  background-color:#fdfdfd;
+  padding:10px;
+}
+.titleBox label{
+color:#444;
+margin:0;
+display:inline-block;
+}
+
+.commentBox {
+  padding:10px;
+  border-top:1px dotted #bbb;
+}
+.commentBox .form-group:first-child, .actionBox .form-group:first-child {
+  width:80%;
+}
+.commentBox .form-group:nth-child(2), .actionBox .form-group:nth-child(2) {
+  width:18%;
+}
+.actionBox .form-group * {
+  width:100%;
+}
+.taskDescription {
+  margin-top:10px 0;
+}
+.commentList {
+  padding:0;
+  list-style:none;
+  max-height:200px;
+  overflow:auto;
+}
+.commentList li {
+  margin:0;
+  margin-top:10px;
+}
+.commentList li > div {
+  display:table-cell;
+}
+.commenterImage {
+  width:30px;
+  margin-right:5px;
+  height:100%;
+  float:left;
+}
+.commenterImage img {
+  width:100%;
+  border-radius:50%;
+}
+.commentText p {
+  margin:5px;
+}
+.sub-text {
+  color:#aaa;
+  font-family:verdana;
+  font-size:11px;
+}
+.actionBox {
+  border-top:1px dotted #bbb;
+  padding:10px;
+}
+
+[data-letters]:before {
+  content:attr(data-letters);
+  display:inline-block;
+  font-size:1em;
+  width:2.5em;
+  height:2.5em;
+  line-height:2.5em;
+  text-align:center;
+  border-radius:50%;
+  background:plum;
+  vertical-align:middle;
+  margin-right:1em;
+  color:white;
+  }
