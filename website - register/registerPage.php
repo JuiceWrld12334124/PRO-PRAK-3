@@ -95,9 +95,9 @@
 <script>
     function passwordValidation(){
         var pass = document.getElementById("password").value;
-        var pass2 = document.getElementById("password_confirmation").value;
+        var confirmPass = document.getElementById("password_confirmation").value;
 
-        if (pass == pass2 ){
+        if (pass == confirmPass ){
             return true;
         } else {
             alert('Password must match !');
