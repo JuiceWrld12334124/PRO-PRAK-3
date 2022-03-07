@@ -58,7 +58,7 @@
                     $message = $post["message"];
                     $time = $post["time"];
 
-                    $query = "select * from user where isBanned=1";
+                    $query = "select * from user where isbanned=1";
                     $users = mysqli_query($db, $query);
                     $userrow = mysqli_num_rows($users);
 

@@ -66,19 +66,7 @@
         </div>
     </section>
 
-    <section>
-        <div>
-            <div>
-                <form class="form" action='/website-dashboard/usernameupdate.php' method='get'>
-                    <h2 class="h2">User Settings</h2>
-                    <p class="p">Username: <?php echo $userVar ?></p>
-                    <p class="p">Total Posts: <?php echo $variable ?></p>
-                    <p class="p"></p> 
-                    <button class='button-solved' name='old_username' value='<?php echo $userVar ?>'>Update Username</button>
-                </form>
-            </div>
-        </div>
-    </section>
+
 
   <div>
         <?php
@@ -280,7 +268,22 @@
                 }
             }
         ?>
+        <section class="" >
+        <div >
+            <div class="container grid">
+                <form class="form" action='/website-dashboard/usernameupdate.php' method='get'>
+                    <h2 class="h2">User Settings</h2>
+                    <p class="p">Username: <?php echo $userVar ?></p>
+                    <p class="p">Total Posts: <?php echo $variable ?></p>
+                    <p class="p"></p> 
+                    <button class='button-solved' name='old_username' value='<?php echo $userVar ?>'>Update Username</button>
+                </form>
+            </div>
+        </div>
+    </section>
     </div>
+
+
     
 
   </body>
