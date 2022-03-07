@@ -8,6 +8,7 @@
     --sub-coloring: #3a6672;
     }
     
+
     * {
     box-sizing: border-box;
     padding: 0;
@@ -495,12 +496,12 @@
       background:#e6e6e6;
       border-radius:8px;
       box-shadow:0 0 40px -10px #000;
-      margin:calc(50vh - 220px) auto;
+      margin: calc(81vh - 722px) 20px;
       padding:20px 30px;
       max-width:calc(100vw - 40px);
       box-sizing:border-box;
       font-family:'Montserrat',sans-serif;
-      position:relative
+      position:absolute;
     }
 
     .form-loginPage {
@@ -678,6 +679,13 @@ body {
   border-bottom: 1px solid rgba(26, 54, 126, 0.125)
 }
 
+.card-header-admin {
+  align-items: center;
+  border-bottom-width: 1px;
+  text-transform: uppercase;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(26, 54, 126, 0.125)
+}
 .card-body {
   flex: 1 1 auto;
   padding: 1.25rem
@@ -790,15 +798,10 @@ display:inline-block;
 {
   color: rgb(174, 0, 255);
 }
-
-@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
-
-@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
 .fa-2x {
-font-size: 2em;
+font-size: 25em;
 }
 .fa {
-position: relative;
 display: table-cell;
 width: 60px;
 height: 36px;
@@ -810,23 +813,21 @@ font-size:20px;
 
 .main-menu:hover,nav.main-menu.expanded {
 width:250px;
-overflow:visible;
 }
 
+
 .main-menu {
-background:#212121;
+background:#3a6672;
 border-right:1px solid #e5e5e5;
-position:absolute;
-top:0;
-bottom:0;
-height:100%;
-left:0;
-width:60px;
+width: 60px;
+height: 87.5vh;
+min-height: 87.5vh;
 overflow:hidden;
 -webkit-transition:width .05s linear;
 transition:width .05s linear;
 -webkit-transform:translateZ(0) scale(1,1);
-z-index:1000;
+position: absolute;
+z-index: 5;
 }
 
 .main-menu>ul {
@@ -844,7 +845,7 @@ position:relative;
 display:table;
 border-collapse:collapse;
 border-spacing:0;
-color:#999;
+color:white;
  font-family: arial;
 font-size: 14px;
 text-decoration:none;
@@ -904,9 +905,17 @@ outline:0;
 margin:0;
 padding:0;
 }
-.main-menu li:hover>a,nav.main-menu li.active>a,.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,.dashboard-page nav.dashboard-menu ul li.active a {
+.main-menu li:hover>a,
+nav.main-menu li.active>a,
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:focus,
+.dropdown-menu>.active>a,
+.dropdown-menu>.active>a:hover,
+.dropdown-menu>.active>a:focus,
+.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,
+.dashboard-page nav.dashboard-menu ul li.active a {
 color:#fff;
-background-color:#5fa2db;
+background-color:#5891a0;
 }
 .area {
 float: left;
@@ -914,9 +923,55 @@ background: #e2e2e2;
 width: 100%;
 height: 100%;
 }
+
 @font-face {
   font-family: 'Titillium Web';
   font-style: normal;
   font-weight: 300;
   src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+}
+
+
+
+@media (max-width: 1200px) {
+  section.card-header-admin 
+  {
+    padding-left: 90px;
+  }
+
+  .main-menu
+  {
+    height: 93.5vh;
+  }
+
+}
+
+@media (max-width: 450px) {
+  section.card-header-admin
+  {
+    padding-left: 70px;
+  }
+
+}
+
+.absolute
+{
+ position: relative;
+}
+
+.container-card
+{
+  max-width: 1100px;
+  overflow: auto;
+  padding: 0 40px;
+}
+
+#a-color
+{
+  color: red;
+}
+
+#b-color
+{
+  color: rgb(255, 0, 221);
 }
