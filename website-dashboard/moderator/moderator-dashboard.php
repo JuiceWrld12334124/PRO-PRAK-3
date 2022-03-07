@@ -1,8 +1,5 @@
 <?php
     session_start();
-    if($_SESSION['userrole'] !="admin"){
-        header("location:../index.php");
-    }
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +19,7 @@
   <section class="overons-head bg-primary">
         <div class="container grid grid-1 absolute">
             <div>
-                <h1 class="text-center xl">Admin - users</h1>
+                <h1 class="text-center xl">Moderator - Users</h1>
             </div>
             <img src="./img/programming-code.svg" alt="">
         </div>
@@ -36,16 +33,15 @@
   <nav class="main-menu">
             <ul>
                 <li>
-                    <a href="./admin-dashboard.php">
+                    <a href="./moderator-dashboard.php">
                         <i class="fa fa-home"></i>
                         <span class="nav-text">
                             Users
                         </span>
                     </a>
-                  
                 </li>
                 <li class="has-subnav">
-                    <a href="./admin-postpage.php">
+                    <a href="./moderator-dashboard-postpage.php">
                         <i class="fa fa-laptop fa-2x"></i>
                         <span class="nav-text">
                             Posts
@@ -53,26 +49,6 @@
                     </a>
                     
                 </li>
-                <li class="has-subnav">
-                    <a href="./admin-dashboard-update-roles.php">
-                       <i class="fa fa-list fa-2x"></i>
-                        <span class="nav-text">
-                            Roles
-                        </span>
-                    </a>
-                    
-                </li>
-
-                <li class="has-subnav">
-                    <a href="./admin-dashboard-banappeals.php">
-                       <i class="fa fa-list fa-2x"></i>
-                        <span class="nav-text">
-                            Ban appeals
-                        </span>
-                    </a>
-                    
-                </li>
-
             </ul>
 
             <ul class="logout">
@@ -88,7 +64,7 @@
         </nav>
 
         <?php
-            include "../api/config.php";
+            include "/xampp/htdocs/api/config.php";
                 $user_query = "select * from user";
                 $users = mysqli_query($db, $user_query);
                 $row = mysqli_fetch_assoc($users); 
@@ -111,18 +87,8 @@
                     <div>
                     <b>Role:</b> $userrol
                     </div>
-                    <form class='container grid' action='/api/delete-user.php' method='post'>
-                    <button class='button-solved ' name='username' value='".$post['username']."'>Delete User</button>
-                    </form>
                     <form class='container grid grid-2' action='./admin-update-users.php' method='get'>
                     <button class='button-solved ' name='old_username' value='".$post['username']."'>Update Username</button>
-                    </form>
-                    </form>
-                    <form class='container grid grid-2' action='/api/ban-script.php' method='post'>
-                    <button class='button-solved ' name='username' value='".$post['username']."'>Ban user</button>
-                    </form>
-                    <form class='container grid grid-2' action='/api/tempban.php' method='post'>
-                    <button class='button-solved ' name='username' value='".$post['username']."'>Time-out user</button>
                     </form>
                     </div>
                     </section>
