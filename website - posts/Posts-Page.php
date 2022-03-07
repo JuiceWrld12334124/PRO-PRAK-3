@@ -1,7 +1,7 @@
 <?php
     session_start();
     if($_SESSION['status'] !="login"){
-        header("location:../index.php");
+        header("location: /website-login/Login-Page.php ");
     }
     error_reporting(E_ERROR | E_PARSE);
 ?>
@@ -21,7 +21,7 @@
     <div class="navbar sticky">
         <div class="container flex">
             <h1 class="logo">Microhard</h1>
-            <nav>
+            <nav class="">
             <ul>
                     <?php
                     
