@@ -36,7 +36,7 @@
                         }
                     else
                     {
-                        echo "<li><a href='index.php'>Home</a></li>";
+                        echo "<li><a href='/index.php'>Home</a></li>";
                         echo "<li><a class='Login-navbar' href='/website-login/Login-Page.php'>Login</a></li>";
                     }
                     ?>
