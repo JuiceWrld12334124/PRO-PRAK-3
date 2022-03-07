@@ -1,10 +1,9 @@
 <?php
     session_start();
-        
     if($_SESSION['status'] !="login"){
         header("location:../index.php");
     }
-
+    error_reporting(E_ERROR | E_PARSE);
 ?>
 
 <!DOCTYPE html>
@@ -23,13 +22,28 @@
         <div class="container flex">
             <h1 class="logo">Microhard</h1>
             <nav>
-                <ul>
+            <ul>
                     <?php
-                    if (isset($_SESSION["username"])) {
-                    echo "<li><a href='/index.php'>Home</a></li>";
-                    echo "<li><a href='/website - posts/Posts-Page.php'>Posts</a></li>";
-                    echo "<li><a href='/api/logout.php'>Logout</a></li>";
+                    
+                    if (isset($_SESSION["userrole"]))
+                    {
+                        echo "<li><a href='/index.php'>Home</a></li>";
+                        echo "<li><a href='/website - posts/Posts-Page.php'>Posts</a></li>";
+                        echo "<li><a href='/api/logout.php'>Logout</a></li>";
+                        echo "<li><a href='/website-dashboard/admin-dashboard.php'>Admin panel</a></li>";
                     }
+                    elseif (isset($_SESSION["moderator"])) {
+                        echo "<li><a href='/index.php'>Home</a></li>";
+                        echo "<li><a href='/website - posts/Posts-Page.php'>Posts</a></li>";
+                        echo "<li><a href='/api/logout.php'>Logout</a></li>";
+                        echo "<li><a href='/website-dashboard/moderator/moderator-dashboard.php'>Moderator Panel</a></li>";
+                        }
+                    elseif (isset($_SESSION["username"])) {
+                        echo "<li><a href='/index.php'>Home</a></li>";
+                        echo "<li><a href='/website - posts/Posts-Page.php'>Posts</a></li>";
+                        echo "<li><a href='/website-dashboard/user/userDashboard.php'>Profile</a></li>";
+                        echo "<li><a href='/api/logout.php'>Logout</a></li>";
+                        }
                     else
                     {
                         echo "<li><a href='index.php'>Home</a></li>";
@@ -61,7 +75,6 @@
     <div>
         <?php
             include "../api/config.php";
-
             $query = "select * from post where id=id_parent order by time desc";
             $posts = mysqli_query($db, $query);
             $num_row = mysqli_num_rows($posts);
@@ -73,23 +86,44 @@
                 </div>
                 ";
             } else {
-                foreach($posts as $post){
+                foreach($posts as $post){ 
+
                     $id = (int)$post["id"];
                     $username = $post["username"];
                     $message = $post["message"];
                     $time = $post["time"];
                     $fc = $username[0];
 
+                    $reply_query = "select * from post where id_parent<>id and id_parent=$id";
+                    $replys = mysqli_query($db, $reply_query);
+                    $row = mysqli_fetch_assoc($replys); 
+
+                    $query = "select * from user";
+                    $users = mysqli_query($db, $query);
+                    $userrow = mysqli_num_rows($users);
+
+                    $state = 'Thread Starter';
+                    $cardstate = "card";
+                    $color = ' ';
+                    
+                    if($row['resolved'] == "1")
+                    {
+                        $Answer = "Answer";
+                        $state = "solved";
+                        $cardstate = "card-solved";
+                    }
+
+
                     echo "
                     <div class=\"container grid grid-1\">
                         <div class=\"container-fluid mt-100\">
                             <div class=\"row\">
                                 <div class=\"col-md-12\">
-                                    <div class=\"card mb-4\">
+                                    <div class=\"$cardstate mb-4\">
                                         <div class=\"card-header\">
                                             <div class=\"\"> 
                                                 <div data-letters=\"$fc\" class=\"\"></div>
-                                                <div class=\"media-body ml-3\"> <a class='super-a' href=\"javascript:void(0)\" data-abc=\"true\">Thread starter</a>
+                                                <div class=\"media-body ml-3\"> <a class='super-a' href=\"javascript:void(0)\" data-abc=\"true\">$state</a>
                                                 <a>$username</a>
                                                 </div>
                                             </div>
@@ -102,32 +136,108 @@
                                         <div class=\"card-footer actionBox\">
                     ";
 
-                    // for
+
                     $reply_query = "select * from post where id_parent<>id and id_parent=$id";
+                    
                     $replys = mysqli_query($db, $reply_query);
+                   while( $row = mysqli_fetch_assoc($replys)) {
 
-                    foreach ($replys as $reply) {
-                        $username = $reply["username"];
-                        $message = $reply["message"];
-                        $time = $reply["time"];
+                       $username = $row["username"];
+                        $message = $row["message"];
+                        $time = $row["time"];
                         $fc = $username[0];
+                        $Answer = '';
 
-                        echo "
+                        $resolvedColor = '';
+                        if ($row['resolved'] == "1")
+                        {
+                            $resolvedColor = "resolved";
+                            $Answer = "Answer";
+                        }
+                        if (isset($_SESSION['userrole']))
+                        {
+                            echo "
                             <!-- <h6>Comments :</h6> -->
                             <ul class=\"commentList\">
-                                <li>
+                            
+                                <li class=\"$resolvedColor\">
                                     <div class=\"commenterImage\">
                                         <p data-letters=\"$fc\"></p>
                                     </div>
                                     <div class=\"commentText\">
+                                        <h3 class='  $Answer'><b>$Answer</b></h3>
                                         <p><b>$username</b></p>
                                         <p class=\"\">$message</p> <span class=\"date sub-text\">$time</span>
-                    
                                     </div>
+                                    <section class='flex-card-'>                                    
+                                    <form action='/api/resolved-script.php' method='post'>
+                                    <button class='button-solved' name='id' value='" .$row['id']. "'>Mark as solved</button>
+                                    </form>
+                                    <form action='/api/unresolved.php' method='post'>
+                                    <button class='button-solved' name='id' value='".$row['id']. "'>Unmark</button>
+                                    </form>
+                                    <form action='/api/delete-reply.php' method='post'>
+                                    <button class='button-solved' name='id' value='".$row['id']. "'>delete</button>
+                                    </form>
+                                    </section>
                                 </li>
                             </ul>
                         ";
-                    }
+                        }
+                        else
+                        {
+                            echo "
+                            <!-- <h6>Comments :</h6> -->
+                            <ul class=\"commentList\">
+                            
+                                <li class=\"$resolvedColor\">
+                                    <div class=\"commenterImage\">
+                                        <p data-letters=\"$fc\"></p>
+                                    </div>
+                                    <div class=\"commentText\">
+                                        <h3 class='  $Answer'><b>$Answer</b></h3>
+                                        <p><b>$username</b></p>
+                                        <p class=\"\">$message</p> <span class=\"date sub-text\">$time</span>
+                                    </div>
+                                    <section class='flex-card-'>                                    
+                                    </section>
+                                </li>
+                            </ul>
+                        ";
+                        }
+
+                   }
+                    // foreach ($replys as $reply) {
+
+                    //     // var_dump($replys);
+                    //     // echo '<hr>';
+                    //     // var_dump($row);
+                    //     $username = $reply["username"];
+                    //     $message = $reply["message"];
+                    //     $time = $reply["time"];
+                    //     $fc = $username[0];
+
+                    //     $resolvedColor = '';
+                    //     if ($reply['resolved'] == "1")
+                    //     {
+                    //         $resolvedColor = "resolved";
+                    //     }
+
+                    //     echo "
+                    //         <!-- <h6>Comments :</h6> -->
+                    //         <ul class=\"commentList\">
+                    //             <li class=\"$resolvedColor\">
+                    //                 <div class=\"commenterImage\">
+                    //                     <p data-letters=\"$fc\"></p>
+                    //                 </div>
+                    //                 <div class=\"commentText\">
+                    //                     <p><b>$username</b></p>
+                    //                     <p class=\"\">$message</p> <span class=\"date sub-text\">$time</span>
+                    //                 </div>
+                    //             </li>
+                    //         </ul>
+                    //     ";
+                    //  }
 
                     echo "
                                             <form action=\"/api/add_reply.php?id=$id\" class=\"form-inline\" role=\"form\" id=\"reply$id\" method=\"POST\">
@@ -168,5 +278,11 @@
         }
     }
 </script>
+
+
+
+<?php //foreach(1 > 2){ ?>
+    <div><?//= '';?></div>
+<?php // } ?>
 
 </html>
