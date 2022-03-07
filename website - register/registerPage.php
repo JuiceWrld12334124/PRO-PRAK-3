@@ -57,7 +57,7 @@
             <div class="">
                 <form class="form-loginPage" 
             id="review_submit" method="post" action="/api/register-script.php"
-                  onsubmit="window.location.reload() return passwordValidation()">
+                  onsubmit="return passwordValidation(); window.location.reload()">
                 <h2 class="h2">Register</h2>
                 <div class="form-control">
                     <p class="p" for="username" type="Naam:"><input required class="input" name="username" placeholder="Gebruikersnaam"></input></p>
