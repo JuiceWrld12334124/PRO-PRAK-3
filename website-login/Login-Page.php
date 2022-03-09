@@ -19,16 +19,25 @@
         <div class="container flex">
             <h1 class="logo">Microhard</h1>
             <nav>
-                <ul>
+            <ul>
                     <?php
-                    if (isset($_SESSION["username"])) {
-                    echo "<li><a href='/index.php'>Home</a></li>";
-                    echo "<li><a href='/api/logout.php'>Logout</a></li>";
+                    
+                    if (isset($_SESSION["userrole"]))
+                    {
+                        echo "<li><a href='/index.php'>Home</a></li>";
+                        echo "<li><a href='/website - posts/Posts-Page.php'>Posts</a></li>";
+                        echo "<li><a href='/api/logout.php'>Logout</a></li>";
+                        echo "<li><a href='/api/logout.php'>Admin panel</a></li>";
                     }
+                    elseif (isset($_SESSION["username"])) {
+                        echo "<li><a href='index.php'>Home</a></li>";
+                        echo "<li><a href='/website - posts/Posts-Page.php'>Posts</a></li>";
+                        echo "<li><a href='/api/logout.php'>Logout</a></li>";
+                        }
                     else
                     {
                         echo "<li><a href='/index.php'>Home</a></li>";
-                        echo "<li><a class='Login-navbar' href='login.php'>Login</a></li>";
+                        echo "<li><a class='Login-navbar' href='/website-login/Login-Page.php'>Login</a></li>";
                     }
                     ?>
                 </ul>

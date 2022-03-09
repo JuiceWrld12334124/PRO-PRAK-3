@@ -1,8 +1,8 @@
 <?php
 include './config.php';
-$id = $_POST['id_parent'];
 
-$sql = "DELETE FROM post WHERE id_parent = $id;";
+$username = $_POST['username'];
+$sql = "UPDATE user SET isbanned = '0' WHERE username = '$username';";
 
 if(mysqli_query($db, $sql)){
     echo "Records were updated successfully.";

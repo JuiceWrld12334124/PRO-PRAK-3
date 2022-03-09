@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap%27');
+
 :root {
-    --primary-color: #5891a0;
+    --primary-color: #5890a081;
     --secondary-color: #435b6b;
     --dark-color: #002240;
     --light-color: #f4f4f4;
@@ -8,6 +10,7 @@
     --sub-coloring: #3a6672;
     }
     
+
     * {
     box-sizing: border-box;
     padding: 0;
@@ -15,7 +18,7 @@
     }
     
     body {
-    font-family: 'Lato', sans-serif;
+      font-family: 'Cairo', sans-serif;
     color: #333;
     line-height: 1.6;
     }
@@ -44,6 +47,10 @@
     width: 100%;
 
     }
+
+    .resolved {
+      background-color: rgba(34, 185, 34, 0.336);
+    }
     
     .features-head img,
     .overons-head img {
@@ -60,6 +67,7 @@
     background-color: var(--primary-color);
     color: #fff;
     height: 70px;
+    transition: ease-out 0.4s;
     }
     
     .navbar ul {
@@ -75,6 +83,9 @@
     
     .navbar a:hover {
       border-bottom: 2px #fff solid;
+      opacity: 1;
+      height: 2px;
+      width: 20px;
     }
     
     .navbar .flex {
@@ -148,8 +159,6 @@
     outline: none;
     }
     
-
-       
     .kaarten {
     padding-top: 100px;
     }
@@ -173,20 +182,17 @@
     flex-wrap: wrap;
     }
     
-    .openingstijde .card {
+    .openingstijde .index-card {
     text-align: center;
     margin: 18px 10px 40px;
     transition: transform 0.2s ease-in;
     }
     
-    .openingstijde .card h4 {
+    .openingstijde .index-card h4 {
     font-size: 20px;
     margin-bottom: 10px;
     }
     
-    .openingstijde .card:hover {
-    transform: translateY(-15px);
-    }
     
     
     .overons-main .card > i {
@@ -232,6 +238,7 @@
       h1.xl
       {
         font-size: 2rem;
+        
       }
       
     }
@@ -391,7 +398,7 @@
     
     input[type=text], select {
     padding: 14px 20px;
-    margin: 8px 0;
+    margin: 8px auto;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -488,17 +495,17 @@
     }
     
     .form {
+
       width:340px;
       height:440px;
       background:#e6e6e6;
       border-radius:8px;
       box-shadow:0 0 40px -10px #000;
-      margin:calc(50vh - 220px) auto;
+      margin: calc(81vh - 722px) 20px;
       padding:20px 30px;
       max-width:calc(100vw - 40px);
       box-sizing:border-box;
       font-family:'Montserrat',sans-serif;
-      position:relative
     }
 
     .form-loginPage {
@@ -556,6 +563,20 @@
       transition:all .3s
     }
     .button2:hover {
+      background:#78788c;
+      color:#fff;
+    }
+
+    .button-solved {
+      padding:8px 12px;
+      margin:8px 0 0;
+      font-family:'Montserrat',sans-serif;
+      border:2px solid #78788c;
+      background:0;color:#5a5a6e;
+      cursor:pointer;
+      transition:all .3s
+    }
+    .button-solved:hover {
       background:#78788c;
       color:#fff;
     }
@@ -662,6 +683,13 @@ body {
   border-bottom: 1px solid rgba(26, 54, 126, 0.125)
 }
 
+.card-header-admin {
+  align-items: center;
+  border-bottom-width: 1px;
+  text-transform: uppercase;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(26, 54, 126, 0.125)
+}
 .card-body {
   flex: 1 1 auto;
   padding: 1.25rem
@@ -711,6 +739,7 @@ display:inline-block;
 }
 .commentList li > div {
   display:table-cell;
+  margin: 20px;
 }
 .commenterImage {
   width:30px;
@@ -736,16 +765,296 @@ display:inline-block;
 }
 
 [data-letters]:before {
-  content:attr(data-letters);
-  display:inline-block;
-  font-size:1em;
-  width:2.5em;
-  height:2.5em;
-  line-height:2.5em;
-  text-align:center;
-  border-radius:50%;
-  background:plum;
-  vertical-align:middle;
-  margin-right:1em;
-  color:white;
+  content: attr(data-letters);
+  display: flex;
+  /* font-size: 1em; */
+  width: 2.5em;
+  height: 2.5em;
+  /* line-height: 2.5em; */
+  text-align: center;
+  border-radius: 50%;
+  background: rgb(160, 207, 221);
+  /* vertical-align: middle; */
+  margin-right: 1em;
+  color: white;
+  justify-content: center;
+  align-items: center;
   }
+
+  .Answer
+  {
+    color: green;
+    margin-left: 6px;
+    margin-top: 1px;
+  }
+
+  .flex-card-card
+  {
+    display: flex;
+  }
+  .flex-card-
+  {
+    display: flex;
+    
+  }
+
+.admin-color
+{
+  color: rgb(174, 0, 255);
+}
+.fa-2x {
+font-size: 25em;
+}
+.fa {
+display: table-cell;
+width: 60px;
+height: 36px;
+text-align: center;
+vertical-align: middle;
+font-size:20px;
+}
+
+
+.main-menu:hover,nav.main-menu.expanded {
+width:250px;
+}
+
+
+.main-menu {
+background:#3a6672;
+border-right:1px solid #e5e5e5;
+width: 60px;
+height: 87.5vh;
+min-height: 87.5vh;
+overflow:hidden;
+-webkit-transition:width .05s linear;
+transition:width .05s linear;
+-webkit-transform:translateZ(0) scale(1,1);
+position: absolute;
+z-index: 5;
+}
+
+.main-menu>ul {
+margin:7px 0;
+}
+
+.main-menu li {
+position:relative;
+display:block;
+width:250px;
+}
+
+.main-menu li>a {
+position:relative;
+display:table;
+border-collapse:collapse;
+border-spacing:0;
+color:white;
+ font-family: arial;
+font-size: 14px;
+text-decoration:none;
+-webkit-transform:translateZ(0) scale(1,1);
+-webkit-transition:all .1s linear;
+transition:all .1s linear;
+  
+}
+
+.main-menu .nav-icon {
+position:relative;
+display:table-cell;
+width:60px;
+height:36px;
+text-align:center;
+vertical-align:middle;
+font-size:18px;
+}
+
+.main-menu .nav-text {
+position:relative;
+display:table-cell;
+vertical-align:middle;
+width:190px;
+  font-family:monospace;
+}
+
+.main-menu>ul.logout {
+position:absolute;
+left:0;
+bottom:0;
+}
+
+.no-touch .scrollable.hover {
+overflow-y:hidden;
+}
+
+.no-touch .scrollable.hover:hover {
+overflow-y:auto;
+overflow:visible;
+}
+
+a:hover,a:focus {
+text-decoration:none;
+}
+
+nav {
+-webkit-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+-o-user-select:none;
+user-select:none;
+}
+
+nav ul,nav li {
+outline:0;
+margin:0;
+padding:0;
+}
+.main-menu li:hover>a,
+nav.main-menu li.active>a,
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:focus,
+.dropdown-menu>.active>a,
+.dropdown-menu>.active>a:hover,
+.dropdown-menu>.active>a:focus,
+.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,
+.dashboard-page nav.dashboard-menu ul li.active a {
+color:#fff;
+background-color:#5891a0;
+}
+.area {
+float: left;
+background: #e2e2e2;
+width: 100%;
+height: 100%;
+}
+
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+}
+
+
+
+@media (max-width: 1200px) {
+  section.card-header-admin 
+  {
+    padding-left: 90px;
+  }
+
+  .main-menu
+  {
+    height: 93.5vh;
+  }
+
+}
+
+@media (max-width: 450px) {
+  section.card-header-admin
+  {
+    padding-left: 70px;
+  }
+
+}
+
+@media (max-width: 450px) {
+  input[type=text], select {
+    padding: 16px 4px;
+    margin-right: 20px 20px;
+    margin: 10px 40px 2px -1px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  input {
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .form
+  {
+    width: 340px;
+    height: 440px;
+    background: #e6e6e6;
+    border-radius: 8px;
+    box-shadow: 0 0 40px -10px #000;
+    margin: calc(81vh - 521px) 20px;
+    padding: 20px 30px;
+    max-width: calc(100vw - 40px);
+    box-sizing: border-box;
+    font-family: 'Montserrat',sans-serif;
+  }
+
+
+}
+
+@media (max-width: 768px)
+{
+  .form
+  {
+    width: 340px;
+    height: 440px;
+    background: #e6e6e6;
+    border-radius: 8px;
+    box-shadow: 0 0 40px -10px #000;
+    margin: calc(81vh - 521px) 20px;
+    padding: 20px 30px;
+    max-width: calc(100vw - 40px);
+    box-sizing: border-box;
+    font-family: 'Montserrat',sans-serif;
+  }
+}
+
+.absolute
+{
+ position: relative;
+}
+
+.container-card
+{
+  max-width: 1100px;
+  overflow: auto;
+  padding: 0 40px;
+}
+
+#a-color
+{
+  color: red;
+}
+
+#b-color
+{
+  color: rgb(255, 0, 221);
+}
+
+.landing-head
+{
+  background-color: #4f4b99;
+  background-image: url(/img/abstract-geometric-shape-gradient-background-free-vector.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 0 0;
+  box-shadow: 0 0 0 0 #ffffff;
+}
+
+.dark-nav
+{
+  background-color: #00224083;
+  transition: 0.4s;
+}
+
+.navbar.sticky.dark-nav:hover
+{
+  background-color: #002240;
+  transition: 0.4s;
+}
+
+.arfon 
+{
+  font-family: 'Cairo', sans-serif;
+  font-size: 20px;
+}

@@ -13,7 +13,45 @@
     padding: 20px;
     margin: 10px;
   }
+
+  .card-solved {
+    background-color: #fff;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 2px 3px 10px rgb(9, 255, 0);
+    padding: 20px;
+    margin: 10px;
+  }
+
+  .index-card {
+    background-color: #fff;
+    color: #333;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+  }
+
+  .news-card > p
+  {
+    color: rgb(0, 0, 0);
+  }
+
+  .index-card:hover
+  {
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   
+  }
+
+  .blank
+  {
+    width: inherit;
+  }
+
+  .blank-image
+  {
+    width: 35em;
+  }
+
   .btn {
     display: inline-block;
     padding: 10px 30px;
@@ -37,9 +75,16 @@
   {
     background-color: #6da3d7;
   }
+
+  .dark-background,
+  .dark-btn
+  {
+    background-color: var(--onesixcolor);
+  }
+  
   .bg-primary,
   .btn-primary {
-    background-color: var(--primary-color);
+    background-color: #417886;
     color: #fff;
   }
   
@@ -110,13 +155,26 @@
   .lg {
     font-size: 3rem;
   }
+
+  .white
+  {
+    color: white;
+  }
   
   .xl {
-    font-size: 4rem;
+    color: #fff;
+    font-family: "Montserrat",Sans-serif;
+    font-size: 52px;
+    font-weight: 700;
   }
   
   .text-center {
     text-align: center;
+  }
+
+  .bold
+  {
+    font-weight: bold;
   }
   
   .alert {
@@ -234,6 +292,23 @@
   
   .py-5 {
     padding: 4rem 0;
+  }
+
+  .py-6 {
+    padding: 5rem 0;
+  }
+
+  .py-7 {
+    padding: 5.5rem 0;
+  }
+
+  .py-8 {
+    padding: 6rem 0;
+  }
+
+  .py-11
+  {
+    padding: 11rem 0;
   }
   
   .p-1 {

@@ -1,8 +1,8 @@
 <?php
 include './config.php';
-$id = $_POST['id_parent'];
+$id = $_POST['id'];
 
-$sql = "DELETE FROM post WHERE id_parent = $id;";
+$sql = "DELETE FROM post WHERE post.id = $id;";
 
 if(mysqli_query($db, $sql)){
     echo "Records were updated successfully.";

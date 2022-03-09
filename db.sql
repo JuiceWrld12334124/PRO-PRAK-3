@@ -26,7 +26,6 @@ ALTER TABLE `post`
 ALTER TABLE `user`
   ADD PRIMARY KEY (`username`);
 
-
 ALTER TABLE `post`
   ADD CONSTRAINT `post_ibfk_1` FOREIGN KEY (`username`) REFERENCES `user` (`username`),
   ADD CONSTRAINT `post_ibfk_2` FOREIGN KEY (`id_parent`) REFERENCES `post` (`id`);

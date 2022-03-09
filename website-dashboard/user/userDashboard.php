@@ -1,66 +1,64 @@
 <?php
     session_start();
-    if($_SESSION['status'] !="login"){
-        header("location: /website-login/Login-Page.php ");
-    }
     error_reporting(E_ERROR | E_PARSE);
+    include "/xampp/htdocs/api/config.php";
+    $username = $_SESSION['username'];
+
+    $count_post_query = "SELECT COUNT(*) FROM `post` WHERE username='$username' AND id_parent=id_parent";
+    $count_post = mysqli_query($db, $count_post_query);
+    $rowscount = mysqli_fetch_array($count_post);
+    $variable = $rowscount[0];
+
+    $user_query = "select * from user where username='$username'";
+    $users = mysqli_query($db, $user_query);
+    $row = mysqli_fetch_assoc($users); 
+    $userVar = $row['username'];
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
+<html>
+  <head>
+  <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/Framework.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
-</head>
-    <!--nav-bar-->
-    <div class="navbar sticky">
+  </head>
+  <body>
+  <div class="navbar sticky">
         <div class="container flex">
-            <h1 class="logo">Microhard</h1>
-            <nav class="">
+            <h1 class="logo">Profile - Page</h1>
+            <nav>
             <ul>
                     <?php
-                    
                     if (isset($_SESSION["userrole"]))
                     {
-                        echo "<li><a href='/index.php'>Home</a></li>";
-                        echo "<li><a href='/website - posts/Posts-Page.php'>Posts</a></li>";
-                        echo "<li><a href='/api/logout.php'>Logout</a></li>";
                         echo "<li><a href='/website-dashboard/admin-dashboard.php'>Admin panel</a></li>";
                     }
-                    elseif (isset($_SESSION["moderator"])) {
-                        echo "<li><a href='/index.php'>Home</a></li>";
-                        echo "<li><a href='/website - posts/Posts-Page.php'>Posts</a></li>";
-                        echo "<li><a href='/api/logout.php'>Logout</a></li>";
-                        echo "<li><a href='/website-dashboard/moderator/moderator-dashboard.php'>Moderator Panel</a></li>";
-                        }
-                    elseif (isset($_SESSION["username"])) {
+                    else
+                    {
                         echo "<li><a href='/index.php'>Home</a></li>";
                         echo "<li><a href='/website - posts/Posts-Page.php'>Posts</a></li>";
                         echo "<li><a href='/website-dashboard/user/userDashboard.php'>Profile</a></li>";
                         echo "<li><a href='/api/logout.php'>Logout</a></li>";
-                        }
-                    else
-                    {
-                        echo "<li><a href='index.php'>Home</a></li>";
-                        echo "<li><a class='Login-navbar' href='/website-login/Login-Page.php'>Login</a></li>";
                     }
                     ?>
                 </ul>
             </nav>
         </div>
     </div>
-    <!--De hoof(onder de navbar het blokje)-->
+
     <section class="overons-head bg-primary py-5">
         <div class="container grid">
             <div>
-                <h1 class="xl">Forum</h1>
+                <h1 class="xl"><?php echo $username?>'s Profile</h1>
                 <p class="lead">
-                    Heb jij een vraag? Stel het!
+                    Je account beheren
                 </p>
 
             </div>
@@ -68,14 +66,19 @@
         </div>
     </section>
 
-    <div class="container grid grid-1">
-        <button class="button2"> <a href="postCreate.php">Maak een post</a> </button>
-    </div>
 
-    <div>
+
+  <div>
         <?php
-            include "../api/config.php";
+            include "/xampp/htdocs/api/config.php";
+            $username = $_SESSION['username'];
             $query = "select * from post where id=id_parent order by time desc";
+            $posts = mysqli_query($db, $query);
+            $num_row = mysqli_num_rows($posts);
+            $rows = mysqli_fetch_assoc($posts);
+
+
+            $query = "select * from post where username='$username'";
             $posts = mysqli_query($db, $query);
             $num_row = mysqli_num_rows($posts);
             if ( $num_row === 0){
@@ -89,6 +92,7 @@
                 foreach($posts as $post){ 
 
                     $id = (int)$post["id"];
+                    $id_parent = (int)$post['id_parent'];
                     $username = $post["username"];
                     $message = $post["message"];
                     $time = $post["time"];
@@ -98,6 +102,7 @@
                     $replys = mysqli_query($db, $reply_query);
                     $row = mysqli_fetch_assoc($replys); 
 
+                
                     $query = "select * from user";
                     $users = mysqli_query($db, $query);
                     $userrow = mysqli_num_rows($users);
@@ -118,6 +123,9 @@
                     <div class=\"container grid grid-1\">
                         <div class=\"container-fluid mt-100\">
                             <div class=\"row\">
+                            <form action='/api/delete_post.php' method='post'>
+                            <button class='button-solved' name='id_parent' value='".$id_parent."'>Delete Post</button>
+                            </form>
                                 <div class=\"col-md-12\">
                                     <div class=\"$cardstate mb-4\">
                                         <div class=\"card-header\">
@@ -164,6 +172,7 @@
                                     <div class=\"commenterImage\">
                                         <p data-letters=\"$fc\"></p>
                                     </div>
+                                    
                                     <div class=\"commentText\">
                                         <h3 class='  $Answer'><b>$Answer</b></h3>
                                         <p><b>$username</b></p>
@@ -259,32 +268,23 @@
                 }
             }
         ?>
+        <section class="" >
+        <div >
+            <div class="container grid">
+                <form class="form" action='/website-dashboard/usernameupdate.php' method='get'>
+                    <h2 class="h2">User Settings</h2>
+                    <p class="p">Username: <?php echo $userVar ?></p>
+                    <p class="p">Total Posts: <?php echo $variable ?></p>
+                    <p class="p"></p> 
+                    <button class='button-solved' name='old_username' value='<?php echo $userVar ?>'>Update Username</button>
+                </form>
+            </div>
+        </div>
+    </section>
     </div>
 
 
+    
 
-
-
-
-</body>
-<script type = "text/javascript">
-    function validatePost(){
-        var message = document.getElementById("message").value;
-        if (message != "" ){
-            return true;
-        } else {
-            alert('Error: Post cannot be empty');
-            return false;
-        }
-    }
-</script>
-
-<script src="/script/script.js"></script>
-
-
-
-<?php //foreach(1 > 2){ ?>
-    <div><?//= '';?></div>
-<?php // } ?>
-
-</html>
+  </body>
+    </html>
