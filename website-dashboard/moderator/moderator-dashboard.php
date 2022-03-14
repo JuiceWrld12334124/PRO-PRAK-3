@@ -90,6 +90,9 @@
                     <form class='container grid grid-2' action='./admin-update-users.php' method='get'>
                     <button class='button-solved ' name='old_username' value='".$post['username']."'>Update Username</button>
                     </form>
+                    <form class='container grid grid-2' action='/api/tempban.php' method='post'>
+                    <button class='button-solved ' name='username' value='".$post['username']."'>Time-out user</button>
+                    </form>
                     </div>
                     </section>
                     ";
