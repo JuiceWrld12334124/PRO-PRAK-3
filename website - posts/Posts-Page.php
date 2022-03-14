@@ -185,6 +185,36 @@
                             </ul>
                         ";
                         }
+                        elseif (isset($_SESSION['moderator']))
+                        {
+                            echo "
+                            <!-- <h6>Comments :</h6> -->
+                            <ul class=\"commentList\">
+                            
+                                <li class=\"$resolvedColor\">
+                                    <div class=\"commenterImage\">
+                                        <p data-letters=\"$fc\"></p>
+                                    </div>
+                                    <div class=\"commentText\">
+                                        <h3 class='  $Answer'><b>$Answer</b></h3>
+                                        <p><b>$username</b></p>
+                                        <p class=\"\">$message</p> <span class=\"date sub-text\">$time</span>
+                                    </div>
+                                    <section class='flex-card-'>                                    
+                                    <form action='/api/resolved-script.php' method='post'>
+                                    <button class='button-solved' name='id' value='" .$row['id']. "'>Solved</button>
+                                    </form>
+                                    <form action='/api/unresolved.php' method='post'>
+                                    <button class='button-solved' name='id' value='".$row['id']. "'>Unmark</button>
+                                    </form>
+                                    <form action='/api/delete-reply.php' method='post'>
+                                    <button class='button-solved' name='id' value='".$row['id']. "'>Delete</button>
+                                    </form>
+                                    </section>
+                                </li>
+                            </ul>
+                        ";
+                        }
                         else
                         {
                             echo "
