@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap%27');
 
+
 :root {
     --primary-color: #5890a081;
     --secondary-color: #435b6b;
@@ -8,7 +9,11 @@
     --success-color: #5cb85c;
     --error-color: #d9534f;
     --sub-coloring: #3a6672;
+
+    
     }
+
+    
     
 
     * {
@@ -54,8 +59,9 @@
     
     .features-head img,
     .overons-head img {
-    width: 200px;
-    justify-self: flex-end;
+        width: 300px;
+        border-radius: 25px;
+        justify-self: flex-end;
     }
     
     .hidden {
@@ -131,16 +137,7 @@
     transition: 0.8s;
     }
     
-    .showcase-form:hover {
-    position: relative;
-    top: 60px;
-    height: 400px;
-    width: 450px;
-    padding: 40px;
-    z-index: 100;
-    justify-self: flex-end;
-    transition-timing-function: 0.8s ease-in-out;
-    }
+
     
     .showcase-form .form-control {
     margin: 30px 0;
@@ -825,7 +822,7 @@ background:#3a6672;
 border-right:1px solid #e5e5e5;
 width: 60px;
 height: 87.5vh;
-min-height: 87.5vh;
+min-height: 89.1vh;
 overflow:hidden;
 -webkit-transition:width .05s linear;
 transition:width .05s linear;
@@ -935,7 +932,14 @@ height: 100%;
   src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
 }
 
+@media (max-width: 512px)
+{
+  .form-loginPage
+  {
+    margin: 102px 15px 58px 75px;
+  }
 
+}
 
 @media (max-width: 1200px) {
   section.card-header-admin 
@@ -1007,6 +1011,16 @@ height: 100%;
     box-sizing: border-box;
     font-family: 'Montserrat',sans-serif;
   }
+
+  .grid
+  {
+    display: grid;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    
+  }
 }
 
 .absolute
@@ -1058,3 +1072,4 @@ height: 100%;
   font-family: 'Cairo', sans-serif;
   font-size: 20px;
 }
+

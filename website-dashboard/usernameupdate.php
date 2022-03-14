@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <section class="review-head bg-primary">
+    <section class="review-head">
         <div class="container grid grid-1">
             <div class="">
                 <form class="form" id="usernamechange" method="post" action="/api/update_username.php"

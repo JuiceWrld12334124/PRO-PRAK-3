@@ -30,7 +30,7 @@
                         echo "<li><a href='/api/logout.php'>Admin panel</a></li>";
                     }
                     elseif (isset($_SESSION["username"])) {
-                        echo "<li><a href='index.php'>Home</a></li>";
+                        echo "<li><a href='/index.php'>Home</a></li>";
                         echo "<li><a href='/website - posts/Posts-Page.php'>Posts</a></li>";
                         echo "<li><a href='/api/logout.php'>Logout</a></li>";
                         }

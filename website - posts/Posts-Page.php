@@ -4,6 +4,7 @@
         header("location: /website-login/Login-Page.php ");
     }
     error_reporting(E_ERROR | E_PARSE);
+    $uid = $_GET['username'];
 ?>
 
 <!DOCTYPE html>
@@ -113,7 +114,7 @@
                         $cardstate = "card-solved";
                     }
 
-
+                
                     echo "
                     <div class=\"container grid grid-1\">
                         <div class=\"container-fluid mt-100\">
@@ -171,13 +172,13 @@
                                     </div>
                                     <section class='flex-card-'>                                    
                                     <form action='/api/resolved-script.php' method='post'>
-                                    <button class='button-solved' name='id' value='" .$row['id']. "'>Mark as solved</button>
+                                    <button class='button-solved' name='id' value='" .$row['id']. "'>Solved</button>
                                     </form>
                                     <form action='/api/unresolved.php' method='post'>
                                     <button class='button-solved' name='id' value='".$row['id']. "'>Unmark</button>
                                     </form>
                                     <form action='/api/delete-reply.php' method='post'>
-                                    <button class='button-solved' name='id' value='".$row['id']. "'>delete</button>
+                                    <button class='button-solved' name='id' value='".$row['id']. "'>Delete</button>
                                     </form>
                                     </section>
                                 </li>

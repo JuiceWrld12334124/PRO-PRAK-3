@@ -9,4 +9,5 @@ if(mysqli_query($db, $sql)){
 } else {
     echo "ERROR: Could not able to execute $db. " . mysqli_error($db);
 }
+
 ?>

@@ -9,3 +9,6 @@ window.addEventListener('scroll', function() {
         document.querySelector('.navbar').classList.remove('dark-nav');
     }
     });
+
+
+
