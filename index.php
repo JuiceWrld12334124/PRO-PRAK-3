@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+error_reporting(E_ERROR | E_PARSE);
 
 ?>
 
@@ -141,6 +141,126 @@ session_start();
         <div class="container grid news-card text-center">
             <img class="blank-image" src="./img/recharge.png">
         </div>
+    </div>
+</section>
+
+<section class="review-head p-3 m-5">
+    <div class="container gridcardflex">
+
+    <?php
+            include "./api/config.php";
+            $query = "select * from post where id=id_parent order by time desc LIMIT 1";
+            $posts = mysqli_query($db, $query);
+            $num_row = mysqli_num_rows($posts);
+            if ( $num_row === 0){
+                echo"
+                <br>
+                <div class=\"container text-center\">
+                    <h3>No Posts Available</h3>
+                </div>
+                ";
+            } else {
+                foreach($posts as $post){ 
+                    echo"<h1 class='text-center lg'>Latest Post</h1>";
+                    $id = (int)$post["id"];
+                    $id_parent = (int)$post['id_parent'];
+                    $username = $post["username"];
+                    $message = $post["message"];
+                    $time = $post["time"];
+                    $fc = $username[0];
+
+                    $reply_query = "select * from post where id_parent<>id and id_parent=$id ";
+                    $replys = mysqli_query($db, $reply_query);
+                    $row = mysqli_fetch_assoc($replys); 
+
+                
+                    $query = "select * from user";
+                    $users = mysqli_query($db, $query);
+                    $userrow = mysqli_num_rows($users);
+
+                    $state = 'Thread Starter';
+                    $cardstate = "card";
+                    $color = ' ';
+                    
+                    if($row['resolved'] == "1")
+                    {
+                        $Answer = "Answer";
+                        $state = "solved";
+                        $cardstate = "card-solved";
+                    }
+
+
+                    echo "
+                    <div class=\"container grid grid-1\">
+                        <div class=\"container-fluid mt-100\">
+                            <div class=\"row\">
+                            <form action='/api/delete_post.php' method='post'>
+                            </form>
+                                <div class=\"col-md-12\">
+                                    <div class=\"$cardstate mb-4\">
+                                        <div class=\"card-header\">
+                                            <div class=\"\"> 
+                                                <div data-letters=\"$fc\" class=\"\"></div>
+                                                <div class=\"media-body ml-3\"> <a class='super-a' href=\"javascript:void(0)\" data-abc=\"true\">$state</a>
+                                                <a>$username</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=\"card-body\">
+                                            <p class='font-b'> 
+                                                $message
+                                            </p>
+                                        </div>
+                                        <div class=\"card-footer actionBox\">
+                    ";
+
+
+                    $reply_query = "select * from post where id_parent<>id and id_parent=$id";
+                    
+                    $replys = mysqli_query($db, $reply_query);
+                   while( $row = mysqli_fetch_assoc($replys)) {
+
+                       $username = $row["username"];
+                        $message = $row["message"];
+                        $time = $row["time"];
+                        $fc = $username[0];
+                        $Answer = '';
+
+                        $resolvedColor = '';
+                        if ($row['resolved'] == "1")
+                        {
+                            $resolvedColor = "resolved";
+                            $Answer = "Answer";
+                        }
+                        else
+                        {
+                            echo "
+                            <!-- <h6>Comments :</h6> -->
+                            <ul class=\"commentList\">
+                            
+                                <li class=\"$resolvedColor\">
+                                    <div class=\"commenterImage\">
+                                        <p data-letters=\"$fc\"></p>
+                                    </div>
+                                    <div class=\"commentText\">
+                                        <h3 class='  $Answer'><b>$Answer</b></h3>
+                                        <p><b>$username</b></p>
+                                        <p class=\"\">$message</p> <span class=\"date sub-text\">$time</span>
+                                    </div>
+                                    <section class='flex-card-'>                                    
+                                    </section>
+                                </li>
+                            </ul>
+                        ";
+                        }
+
+                   }
+
+
+                }
+            }
+        ?>
+
     </div>
 </section>
 
