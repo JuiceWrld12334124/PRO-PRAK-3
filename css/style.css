@@ -8,13 +8,8 @@
     --light-color: #f4f4f4;
     --success-color: #5cb85c;
     --error-color: #d9534f;
-    --sub-coloring: #3a6672;
-
-    
+    --sub-coloring: #3a6672;    
     }
-
-    
-    
 
     * {
     box-sizing: border-box;
