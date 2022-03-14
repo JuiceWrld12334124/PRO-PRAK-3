@@ -95,52 +95,27 @@
             </ul>
         </nav>
 
-        <?php
-            include "../api/config.php";
-                $user_query = "select * from user";
-                $users = mysqli_query($db, $user_query);
-                $row = mysqli_fetch_assoc($users); 
-            if ($row === 0){
-                echo"
-                <br>
-                <div class=\"container text-center\">
-                    <h3>No Posts Available</h3>
+        <section class="review-head ">
+        <div class="container grid grid-1">
+            <div class="">
+                <form class="form-loginPage" 
+            id="review_submit" method="post" action="/api/register-script.php"
+                  onsubmit="return passwordValidation(); window.location.reload()">
+                <h2 class="h2">Create user</h2>
+                <div class="form-control">
+                    <p class="p" for="username" type="Naam:"><input required class="input" name="username" placeholder="Gebruikersnaam"></input></p>
                 </div>
-                ";
-            } 
-            else {
-                foreach($users as $post){ 
-                    $username = $post['username'];
-                    $userrol = $post['userRole'];
-                    echo "
-                    <section class='card-header-admin'>
-                    <div class=\"container\">
-                    <b>username:</b> $username
-                    <div>
-                    <b>Role:</b> $userrol
-                    </div>
-                    <form class='container grid' action='/api/delete-user.php' method='post'>
-                    <button class='button-solved ' name='username' value='".$post['username']."'>Delete User</button>
-                    </form>
-                    <form class='container grid grid-2' action='./admin-update-users.php' method='get'>
-                    <button class='button-solved ' name='old_username' value='".$post['username']."'>Update Username</button>
-                    </form>
-                    </form>
-                    <form class='container grid grid-2' action='/api/ban-script.php' method='post'>
-                    <button class='button-solved ' name='username' value='".$post['username']."'>Ban user</button>
-                    </form>
-                    <form class='container grid grid-2' action='/api/tempban.php' method='post'>
-                    <button class='button-solved ' name='username' value='".$post['username']."'>Time-out user</button>
-                    </form>
-                    </div>
-                    </section>
-                    ";
-
-                }
-                
-            }
-            
-        ?>
+                <div class="form-control">
+                    <p class="p" for="password" type="Wachtwoord"><input type="password" required class="input" name="password" placeholder="Wachtwoord"></input></p>
+                </div>
+                <div class="form-control">
+                    <p class="p" for="password" type="Opnieuw wachtwoord"><input type="password" name="password_confirmation" required class="input" name="password" placeholder="Wachtwoord"></input></p>
+                </div>
+                <button class="button2" name="submit" >Create</button>
+            </form>
+            </div>
+        </div>
+    </section>
 
   </body>
     </html>
