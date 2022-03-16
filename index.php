@@ -2,6 +2,10 @@
 session_start();
 error_reporting(E_ERROR | E_PARSE);
 
+if($_SESSION['status'] !="login"){
+    header("location: /website-login/Login-Page.php");
+}
+
 ?>
 
 
