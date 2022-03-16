@@ -14,6 +14,11 @@ $banned_result = mysqli_query($db, $banned_query);
 $count_banned = mysqli_num_rows($banned_result);
 $banrow = mysqli_fetch_row($banned_result);
 
+$app_query = "SELECT accepted FROM user WHERE accepted=1 AND username ='$username'; ";
+$app_result = mysqli_query($db, $app_query);
+$count_app = mysqli_num_rows($app_result);
+$approw = mysqli_fetch_assoc($app_result);
+
 
 
 if ($count > 0){
@@ -47,9 +52,19 @@ if ($count > 0){
         }
         else
         {
-            $_SESSION['username'] = $username;
-            $_SESSION['status'] = "login";
-            header("location:/index.php");
+            if ($approw['accepted'] == 0)
+            {
+                $_SESSION['username'] = $username;
+                $_SESSION['status'] = "inReview";
+                header("location:/website-noacces/applicationform.php?=error?inreview");
+            }
+            else
+            {
+                $_SESSION['username'] = $username;
+                $_SESSION['status'] = "login";
+                header("location:/index.php");
+            }
+
         }
     }
     
