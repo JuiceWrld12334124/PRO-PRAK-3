@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/Framework.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
   </head>
   <body>
@@ -34,7 +35,7 @@
             <ul>
                 <li>
                     <a href="./moderator-dashboard.php">
-                        <i class="fa fa-home"></i>
+                        <i class="fa fa-home fa-2x"></i>
                         <span class="nav-text">
                             Users
                         </span>
@@ -42,7 +43,7 @@
                 </li>
                 <li class="has-subnav">
                     <a href="./moderator-dashboard-postpage.php">
-                        <i class="fa fa-laptop fa-2x"></i>
+                        <i class="fa fa-clone fa-2x"></i>
                         <span class="nav-text">
                             Posts
                         </span>
