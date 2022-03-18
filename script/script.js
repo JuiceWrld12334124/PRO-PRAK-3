@@ -11,14 +11,4 @@ window.addEventListener('scroll', function() {
     });
 
 
-    window.addEventListener('scroll', function() {
-      var scrollY = window.scrollY;
-    
-      if ( window.scrollY > 3070 ) {
-        document.add(".pushin").classList.remove(".pushin")
-      }
-
-      });
-
-
 
