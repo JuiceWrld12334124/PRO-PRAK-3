@@ -18,6 +18,8 @@ if($_SESSION['status'] !="login"){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/Framework.css">
+    <link rel="stylesheet" href="css/pushin.min.css">
+    <script type="text/javascript" src="script/pushin.min.js"></script>
     <title>Document</title>
 </head>
 
@@ -67,29 +69,68 @@ if($_SESSION['status'] !="login"){
 </section>
 
 
-<section class="openingstijde">
-    <h2 class="md text-center my-2">
-        Wat kan ik allemaal doen?
-    </h2>
-    <div class="container grid grid-3 cardflex">
-        <div class="index-card">
-            <img class="blank" src="./img/DA-Icon1.png" alt="">
-            <h4>Support</h4>
-            <p>Heb je vragen? Dan kunnen die beantwoord worden</p>
+
+<div id="cheese">
+<div id="cheese" class="pushin">
+    <div class="pushin-scene">
+
+        <div class="pushin-layer" data-pushin-from="150" data-pushin-to="300">
+            <section class="openingstijde">
+                <h2 class="md text-center my-2">
+                    Wat kan ik vragen?
+                </h2>
+                <div class="container">
+                    <div class="index-card">
+                        <img class="blank" src="./img/DA-Icon1.png" alt="">
+                        <h4>Support</h4>
+                        <p>Heb je vragen? Dan kunnen die beantwoord worden</p>
+                    </div>
+                </div>
+            </section>
         </div>
-        <div class="index-card">
-            <img class="blank" src="./img/softaculous-1.png" alt="">
-            <h4>Sources</h4>
-            <p>Wil je een hub, voor source downloads net zoals github? Dan ben je op de juiste plek!</p>
+
+        <div class="pushin-layer" data-pushin-from="300" data-pushin-to="800">
+            <section class="openingstijde">
+                <h2 class="md text-center my-2">
+                    Zijn er sources om van te leren?
+                </h2>
+                <div class="container">
+                    <div class="index-card">
+                        <img class="blank" src="./img/softaculous-1.png" alt="">
+                        <h4>Sources</h4>
+                        <p>Wil je een hub, voor source downloads net zoals github? Dan ben je op de juiste plek!</p>
+                    </div>
+                </div>
+            </section>
         </div>
-        <div class="index-card">
-            <img class="blank" src="./img/Red-icon.png" alt="">
-            <h4>Privacy</h4>
-            <p>Je gevevens en posts worden met top niveau software beveiligd.</p>
+
+        <div class="pushin-layer" data-pushin-from="800" data-pushin-to="1350">
+            <section class="openingstijde">
+                <h2 class="md text-center my-2">
+                    Wat gebeuren er met mijn gegevens?
+                </h2>
+                <div class="container">
+                    <div class="index-card">
+                        <img class="blank" src="./img/Red-icon.png" alt="">
+                        <h4>Privacy</h4>
+                        <p>Je gevevens en posts worden met top niveau software beveiligd.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="pushin-layer" data-pushin-to="1400">
 
         </div>
+
     </div>
-</section>
+</div>
+<script type="text/javascript">
+    pushInStart( );
+</script>
+
+</div>
+
 
 
 <section class="overons-sub-head bg-light py-4 landing-head">
