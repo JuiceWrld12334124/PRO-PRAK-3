@@ -35,7 +35,7 @@
   </head>
   <body>
   <div class="loader">
-      <img id="s-width" src="img/943d662b-25c9-42d6-9fd2-cc36d2ffab76.gif" alt="">
+      <img id="s-width" src="/img/943d662b-25c9-42d6-9fd2-cc36d2ffab76.gif" alt="">
 </div>
   <div class="navbar sticky">
         <div class="container flex">
@@ -85,7 +85,7 @@
             <div class="container grid grid-4">
                 <form class="showcas" action="/website - posts/Posts-Page.php" method='post'>
                     <h2 class="h2">User Settings</h2>
-                    <p class="p">Username: <?php echo $userVar ?></p>
+                    <p class="p">Username: <?php echo $username ?></p>
                     <p class="p">Total Posts: <?php echo $variable ?></p>
                     <p class="p"></p> 
                     <button class="button2">Posts</button>
