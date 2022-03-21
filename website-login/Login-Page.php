@@ -64,7 +64,7 @@
     <section class="review-head bg-primary">
         <div class="container grid grid-1">
             <div class="">
-                <form class="form-loginPage" 
+                <form class="form-loginPage2" 
             id="review_submit" method="post" action="/api/login-script.php"
                   onsubmit="window.location.reload()">
                 <h2 class="h2">Login</h2>
