@@ -337,3 +337,24 @@
 
     width: 50%;
 }
+
+    
+@media (max-width:890px) {
+
+
+    img
+    {
+      display: none;
+    }
+
+    section.overons-head.bg-primary.py-5
+    {
+      padding: 6rem 5rem;
+    }
+    h1.xl
+    {
+      font-size: 2rem;
+      
+    }
+    
+  }
