@@ -75,7 +75,7 @@ if($_SESSION['status'] !="login"){
 
 <div id="cheese">
 <div id="cheese" class="pushin">
-    <div class="pushin-scene">
+    <div class="pushin-scene" data-pushin-breakpoints="899">
 
         <div class="pushin-layer" data-pushin-from="150" data-pushin-to="300">
             <section class="openingstijde">
