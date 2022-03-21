@@ -23,6 +23,9 @@ if($_SESSION['status'] !="login"){
     <title>Document</title>
 </head>
 
+<div class="loader">
+      <img id="s-width" src="img/943d662b-25c9-42d6-9fd2-cc36d2ffab76.gif" alt="">
+</div>
 <!--nav-bar-->
 <div class="navbar sticky">
     <div class="container flex">

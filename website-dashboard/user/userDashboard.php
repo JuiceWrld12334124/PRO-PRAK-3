@@ -34,6 +34,9 @@
     <title>Document</title>
   </head>
   <body>
+  <div class="loader">
+      <img id="s-width" src="img/943d662b-25c9-42d6-9fd2-cc36d2ffab76.gif" alt="">
+</div>
   <div class="navbar sticky">
         <div class="container flex">
             <h1 class="logo">Profile - Page</h1>
