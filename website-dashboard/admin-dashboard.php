@@ -122,6 +122,7 @@ if ($row === 0) {
         $username = $post['username'];
         $userrol = $post['userRole'];
         echo "
+                    <div>
                     <section class='card-header-admin'>
                     <div class=\"container\">
                     <b>username:</b> $username
@@ -143,6 +144,7 @@ if ($row === 0) {
                     </form>
                     </div>
                     </section>
+                    </div>
                     ";
 
     }
